@@ -1,0 +1,13 @@
+(1) 进入src\projects\windows\vc14\lib目录,打开libcurl.sln文件
+
+(2) 选择编译模式为lib release win32，重新生成解决方案，即会在
+    src\build\win32\vc14\lib release目录下生成libcurl.lib文件
+
+(3) 使用时拷贝src\include\curl到新工程include目录，拷贝上面的
+    libcurl.lib文件到lib目录，并做相应配置后即可开始使用curl
+
+(4) 如果出现连接错误，请检查以下项：
+    a）主项目和libcurl项目是否使用了相同的运行库选项MT /MTd /MD /MDd
+       设置方式：工程上右键-》属性-》c/c++-》代码生成-》运行库
+    b) 在主项目中加入预编译选项：项目->属性->c/c++ ->预处理器->预处理器，
+       把;BUILDING_LIBCURL;HTTP_ONLY复制进去
